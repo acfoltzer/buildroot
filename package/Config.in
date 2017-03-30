@@ -371,6 +371,7 @@ menu "Firmware"
 	source "package/wilink-bt-firmware/Config.in"
 	source "package/zd1211-firmware/Config.in"
 	source "package/armbian-firmware/Config.in"
+	source "package/odroid-firmware/Config.in"
 endmenu
 	source "package/a10disp/Config.in"
 	source "package/acpica/Config.in"
