@@ -1,0 +1,8 @@
+config BR2_PACKAGE_UXAS
+	bool "UxAS"
+	select BR2_PACKAGE_MESA3D
+	select BR2_PACKAGE_XORG7
+	help
+	  OpenUxAS	  
+
+	  https://github.com/afrl-rq/OpenUxAS
