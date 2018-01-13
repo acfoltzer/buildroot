@@ -37,4 +37,4 @@ define UXAS_INSTALL_STAGING_CMDS
 		-C $(@D)/build_buildroot install
 endef
 
-$(eval $(generic-package)
+$(eval $(generic-package))

@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-MESON_VERSION = 0.44.0
-MESON_SITE = https://github.com/mesonbuild/meson/releases/download/$(MESON_VERSION)
+MESON_VERSION = c56b71a9a83a22f9d54aecb7293bdac90366ddd5
+MESON_SITE = git://github.com/acfoltzer/meson.git
 MESON_LICENSE = Apache-2.0
 MESON_LICENSE_FILES = COPYING
 MESON_SETUP_TYPE = setuptools
