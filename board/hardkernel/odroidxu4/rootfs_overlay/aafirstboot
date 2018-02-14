@@ -10,13 +10,21 @@
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 
+if [ -e /proc/fs/ext4/mmcblk0p2 ]; then
+    MMCBLK=mmcblk0
+elif [ -e /proc/fs/ext4/mmcblk1p2 ]; then
+    MMCBLK=mmcblk1
+else
+    exit 1
+fi
+
 if [ -f /.first_boot ]; then
 	mkdir -p /media/boot
 	# ok, its the very first boot, we need to resize the disk.
-	p2_start=`fdisk -l /dev/mmcblk1 | grep mmcblk1p2 | awk '{print $4}'`
-	p2_finish=`fdisk -l /dev/mmcblk1 | grep sectors | awk '{printf $7}'`
+	p2_start=`fdisk -l /dev/${MMCBLK} | grep ${MMCBLK}p2 | awk '{print $4}'`
+	p2_finish=`fdisk -l /dev/${MMCBLK} | grep sectors | awk '{printf $7}'`
 
-	fdisk -u /dev/mmcblk1 <<EOF
+	fdisk -u /dev/${MMCBLK} <<EOF
 p
 d
 2
@@ -32,5 +40,5 @@ EOF
 	sync
 	reboot
 else
-	resize2fs /dev/mmcblk1p2 && rm -fr /aafirstboot
+	resize2fs /dev/${MMCBLK}p2 && rm -fr /aafirstboot
 fi
